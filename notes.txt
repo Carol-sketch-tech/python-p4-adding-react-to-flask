@@ -1,0 +1,46 @@
+ADDING REACT TO FLASK
+
+THE Client-Server Model
+the client handles what goes on in the browser(the tasks controlled by the user) and the server handles data from the database and hidden tasks that the user doesnt need 
+to or shouldnt see.
+we use this seperation of tasks to inform how we strucute our applciations in development.
+
+in the client/ side you will use node to create the skeleton for your client-side code 
+and install dependencies 
+
+in the sercer directory you will use pipenc to install dependencies then flask to create your server -side application and database.
+when development severs are run for boteh sides. the two can communicates over transamisiion control protocls such as HTTP and websoceket.
+the transmission control protocl such as HTTP and websocket. Any TCP connection stays active until the two sides are done sending to one another.
+in HTTP the connection ends every time a messafe is sent.
+this is what we see in using fetch(). websocket another protocl keepst he connection open until is is explicitly endend by either side - we will learn more about this with 
+socekt.io.
+
+
+REACT FETCH()
+    react uses a function called fetch() to retrieve data from APIs at other URLs.
+    In order to get data with fetch, we put the command inside of a useEffect hookd as seen in APP.js
+we then inclise an empty array as a second argument to the useEffect to only run fetch() as an asynchronouse operation on the first render of App.
+as seen the react application looks for a resource from our FLASK API.
+the response dara is then() converted to json if it is not laready in the format, then() data is used to populate the application with messages.
+
+it is wise when developwign full stcask application to look for the correct data formats and reponse code from the sercer as you move forward. 
+in app.js
+
+POST PATCH DELETE with FETCH()
+
+fetch() defaults to using GET as its HTPP METHOD.
+if we want to carry out funcitons other thatn basic retrieces we need to specify that and our messafe format.
+ in the example in newMessage.js WE use useEffect, here we have a hook called onAddMessage passed to the newMessafe 
+ element that updates the entire app when a message is confirmed t have been created.
+handlesubmit() is onvoles wach time a user hits the send button and generate a post request with the body of the NewMessage element.
+
+fetch() takes an optional object as a second argument after the Flask APIs URL with an HTTP 
+request method, headers to specify the format of the message and a message and a body (PATCH request needs these elements as well.)
+
+CORS recap.
+cross origin resource sharing is a mechanism that lets a server(the flask application in our case) specify UTL patterns other than its own from which the cliend should be 
+allowed to load resources.
+THis is carried out in HTTP headers, byt we typically handle it n a more automates fashion with extensions like Flask, CORS.
+
+the fetch() API follows the same -origin policy which enforces that resources can only be loaded from URL pattersn owened by the applicaiton sending the request . this is why we need 
+ti use CORS in our FLASK applicaiton 
